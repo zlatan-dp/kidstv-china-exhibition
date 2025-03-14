@@ -1,0 +1,108 @@
+#kidstv-china-exhibition {
+  --black-color: #000326;
+  --white-color: #ffffff;
+  --accent-color: #008cff;
+  --trans-dur: 250ms;
+  --trans-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 133%;
+  letter-spacing: 0.01em;
+  color: var(--black-color);
+  text-align: left;
+  background-color: var(--white-color);
+
+  max-width: 1920px;
+  margin: 0 auto;
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    color: var(--black-color);
+  }
+
+  ul,
+  ol {
+    padding-left: 0;
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  section {
+    padding: 146px 0;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0 146px;
+  }
+
+  .link {
+    text-decoration: none;
+  }
+
+  .list {
+    list-style: none;
+  }
+
+  .white-color {
+    color: var(--white-color);
+  }
+
+  .section-top-border {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -20px;
+
+    @media (min-width: 760px) {
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      margin-top: -30px;
+    }
+  }
+}
+
+/* HEADER */
+
+.header {
+  padding: 19px 0;
+  background-color: var(--accent-color);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 100%;
+    }
+
+    .menu-list {
+      display: flex;
+      gap: 40px;
+
+      .menu-link {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+        color: var(--white-color);
+      }
+    }
+  }
+}
+
+/* HERO SECTION */
