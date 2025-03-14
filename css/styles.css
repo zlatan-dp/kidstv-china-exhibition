@@ -1,4 +1,4 @@
-#kidstv-china-exhibition {
+.kidstv-china-exhibition {
   --black-color: #000326;
   --white-color: #ffffff;
   --accent-color: #008cff;
@@ -77,13 +77,17 @@
 /* HEADER */
 
 .header {
-  padding: 19px 0;
+  position: fixed;
+  width: 100%;
+  max-width: 1920px;
+  padding: 12px 0;
   background-color: var(--accent-color);
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 40px;
 
     .logo {
       font-weight: 600;
@@ -94,13 +98,53 @@
     .menu-list {
       display: flex;
       gap: 40px;
+      align-items: center;
 
-      .menu-link {
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 120%;
-        color: var(--white-color);
+      .menu-item {
+        display: flex;
+        align-items: center;
+
+        .menu-link {
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 120%;
+          color: var(--white-color);
+        }
       }
+    }
+  }
+}
+
+/* HERO SECTION */
+
+.hero {
+  background-image: url('../img/bg-hero.jpg');
+  background-size: cover;
+  height: 57vw;
+  max-height: 1100px;
+
+  .hero-info {
+    max-width: 521px;
+
+    .hero-title {
+      font-weight: 600;
+      font-size: 120px;
+      line-height: 100%;
+
+      color: var(--white-color);
+    }
+
+    .hero-sub-title {
+      font-weight: 600;
+      font-size: 52px;
+      line-height: 120%;
+      margin-top: 10px;
+      color: var(--white-color);
+    }
+
+    .hero-text {
+      margin-top: 84px;
+      color: var(--white-color);
     }
   }
 }
