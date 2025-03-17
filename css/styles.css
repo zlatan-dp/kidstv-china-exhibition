@@ -90,6 +90,7 @@
 
 .header {
   position: fixed;
+  z-index: 100;
   width: 100%;
   max-width: 1920px;
   padding: 12px 0;
@@ -176,6 +177,7 @@
       position: relative;
       flex: 1 1 calc(50% - 16px);
       border-radius: 20px;
+      overflow: hidden;
 
       .features-text {
         position: absolute;
