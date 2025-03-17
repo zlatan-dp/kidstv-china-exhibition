@@ -72,6 +72,18 @@
       margin-top: -30px;
     }
   }
+
+  .section-title {
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 100%;
+    letter-spacing: 0.01em;
+    color: var(--accent-color);
+  }
+
+  .section-title-mb {
+    margin-bottom: 64px;
+  }
 }
 
 /* HEADER */
@@ -145,6 +157,40 @@
     .hero-text {
       margin-top: 84px;
       color: var(--white-color);
+    }
+  }
+}
+
+/* FEATURES */
+
+.features {
+  background-color: var(--white-color);
+
+  .features-list {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 104px;
+
+    .features-item {
+      position: relative;
+      flex: 1 1 calc(50% - 16px);
+      border-radius: 20px;
+
+      .features-text {
+        position: absolute;
+        left: 8%;
+        top: 14%;
+        font-weight: 600;
+        font-size: 52px;
+        line-height: 100%;
+        letter-spacing: 0.01em;
+        color: var(--accent-color);
+
+        &.white-color {
+          color: var(--white-color);
+        }
+      }
     }
   }
 }
