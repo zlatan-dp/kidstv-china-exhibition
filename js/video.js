@@ -3,70 +3,113 @@ const protectiveTrigger = document.querySelector('.protective-trigger');
 const protectiveVideoWrap = document.querySelector('.protective-video');
 const protectiveVideo = document.querySelector('.protective-video video');
 
+const moveHereStand = document.querySelector('.move-here-stand');
+const standTrigger = document.querySelector('.stand-trigger');
+const standVideoWrap = document.querySelector('.stand-video');
+const standVideo = document.querySelector('.stand-video video');
+
 function isMobile() {
   return window.innerWidth < 760;
 }
 
-function playVideo() {
-  if (protectiveVideo.readyState >= 2 && protectiveVideo.paused) {
-    protectiveVideo.play();
+function playVideo(video) {
+  if (video.readyState >= 2 && video.paused) {
+    video.play();
   }
 }
 
-function stopVideo() {
-  if (
-    !moveHereProtective.matches(':hover') &&
-    !protectiveTrigger.matches(':hover')
-  ) {
-    protectiveVideo.pause();
-    protectiveVideo.currentTime = 0;
+function stopVideo(moveHere, trigger, video) {
+  if (!moveHere.matches(':hover') && !trigger.matches(':hover')) {
+    video.pause();
+    video.currentTime = 0;
   }
 }
 
-function toggleHiddenVideo() {
-  moveHereProtective.classList.toggle('hidden');
-  protectiveVideoWrap.classList.toggle('hidden');
+function toggleHiddenVideo(moveHere, wrap) {
+  moveHere.classList.toggle('hidden');
+  wrap.classList.toggle('hidden');
 }
 
-moveHereProtective.addEventListener('mouseenter', () => {
-  toggleHiddenVideo();
-  playVideo();
-});
+function mouseEnterVideo(moveHere, videoWrap, video) {
+  toggleHiddenVideo(moveHere, videoWrap);
+  playVideo(video);
+}
 
-moveHereProtective.addEventListener('mouseleave', () => {
-  stopVideo();
-  toggleHiddenVideo();
-});
+function mouseLeaveVideo(moveHere, trigger, video, videoWrap) {
+  stopVideo(moveHere, trigger, video);
+  toggleHiddenVideo(moveHere, videoWrap);
+}
 
-protectiveTrigger.addEventListener('mouseenter', () => {
-  toggleHiddenVideo();
-  playVideo();
-});
-
-protectiveTrigger.addEventListener('mouseleave', () => {
-  stopVideo();
-  toggleHiddenVideo();
-});
-
-moveHereProtective.addEventListener('click', () => {
+function mouseClickVideo(video, moveHere, videoWrap, trigger) {
   if (isMobile()) {
-    if (protectiveVideo.paused) {
-      toggleHiddenVideo();
-      playVideo();
+    if (video.paused) {
+      toggleHiddenVideo(moveHere, videoWrap);
+      playVideo(video);
     } else {
-      stopVideo();
-      toggleHiddenVideo();
+      stopVideo(moveHere, trigger, video);
+      toggleHiddenVideo(moveHere, videoWrap);
     }
   }
-});
-protectiveTrigger.addEventListener('click', () => {
-  if (isMobile()) {
-    if (protectiveVideo.paused) {
-      toggleHiddenVideo();
-      playVideo();
-    } else {
-      stopVideo();
-      toggleHiddenVideo();
-    }
-  }
-});
+}
+
+// Protective video
+
+moveHereProtective.addEventListener('mouseenter', () =>
+  mouseEnterVideo(moveHereProtective, protectiveVideoWrap, protectiveVideo)
+);
+moveHereProtective.addEventListener('mouseleave', () =>
+  mouseLeaveVideo(
+    moveHereProtective,
+    protectiveTrigger,
+    protectiveVideo,
+    protectiveVideoWrap
+  )
+);
+protectiveTrigger.addEventListener('mouseenter', () =>
+  mouseEnterVideo(moveHereProtective, protectiveVideoWrap, protectiveVideo)
+);
+protectiveTrigger.addEventListener('mouseleave', () =>
+  mouseLeaveVideo(
+    moveHereProtective,
+    protectiveTrigger,
+    protectiveVideo,
+    protectiveVideoWrap
+  )
+);
+moveHereProtective.addEventListener('click', () =>
+  mouseClickVideo(
+    protectiveVideo,
+    moveHereProtective,
+    protectiveVideoWrap,
+    protectiveTrigger
+  )
+);
+protectiveTrigger.addEventListener('click', () =>
+  mouseClickVideo(
+    protectiveVideo,
+    moveHereProtective,
+    protectiveVideoWrap,
+    protectiveTrigger
+  )
+);
+
+// Stand video
+
+moveHereStand.addEventListener('mouseenter', () =>
+  mouseEnterVideo(moveHereStand, standVideoWrap, standVideo)
+);
+moveHereStand.addEventListener('mouseleave', () =>
+  mouseLeaveVideo(moveHereStand, standTrigger, standVideo, standVideoWrap)
+);
+standTrigger.addEventListener('mouseenter', () =>
+  mouseEnterVideo(moveHereStand, standVideoWrap, standVideo)
+);
+standTrigger.addEventListener('mouseleave', () =>
+  mouseLeaveVideo(moveHereStand, standTrigger, standVideo, standVideoWrap)
+);
+moveHereStand.addEventListener('click', () =>
+  mouseClickVideo(standVideo, moveHereStand, standVideoWrap, standTrigger)
+);
+standTrigger.addEventListener('click', () =>
+  mouseClickVideo(standVideo, moveHereStand, standVideoWrap, standTrigger)
+);

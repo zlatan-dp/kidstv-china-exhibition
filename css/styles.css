@@ -368,5 +368,66 @@
     }
   }
 
+  /* STAND SECTION */
+
+  .stand {
+    padding: 0;
+    position: relative;
+    z-index: 50;
+    background-image: url('../img/stand/bg-stand.jpg');
+    background-size: cover;
+    height: 57vw;
+    max-height: 1100px;
+
+    .stand-fx {
+      position: absolute;
+      width: 100%;
+      z-index: 53;
+    }
+
+    .move-here-stand {
+      position: absolute;
+      z-index: 55;
+      width: 14%;
+      right: 21%;
+      top: 65%;
+      transition: opacity var(--trans-dur) var(--trans-timing-function);
+    }
+
+    .stand-video {
+      position: relative;
+      z-index: 52;
+      height: 100%;
+      overflow: hidden;
+      transition: opacity var(--trans-dur) var(--trans-timing-function);
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+    }
+
+    .stand-trigger {
+      position: absolute;
+      z-index: 54;
+      background-color: transparent;
+      width: 20%;
+      height: 21%;
+      top: 60%;
+      left: 72%;
+      transform: translateX(-50%);
+    }
+
+    .info-wrap {
+      position: absolute;
+      z-index: 57;
+      top: 7%;
+      left: 7%;
+      max-width: 500px;
+    }
+  }
+
   /* HERO SECTION */
 }
