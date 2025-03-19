@@ -587,4 +587,41 @@
       }
     }
   }
+
+  /* MARKETING SECTION */
+
+  .faq {
+    position: relative;
+    z-index: 70;
+    background-color: #e7ebeb;
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      .faq-item {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        background-color: var(--white-color);
+        padding: 40px;
+        border-radius: 20px;
+
+        .faq-question {
+          font-weight: 600;
+          font-size: 28px;
+          line-height: 121%;
+          color: var(--accent-color);
+        }
+
+        .faq-answer {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 133%;
+          color: #202020;
+        }
+      }
+    }
+  }
 }
