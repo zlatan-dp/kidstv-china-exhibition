@@ -1,5 +1,6 @@
 .kidstv-china-exhibition {
   --black-color: #000326;
+  --second-black-color: #202020;
   --white-color: #ffffff;
   --accent-color: #008cff;
   --trans-dur: 300ms;
@@ -9,7 +10,7 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 133%;
-  letter-spacing: 0.01em;
+  /* letter-spacing: 0.01em; */
   color: var(--black-color);
   text-align: left;
   background-color: var(--white-color);
@@ -619,7 +620,7 @@
           font-weight: 500;
           font-size: 18px;
           line-height: 133%;
-          color: #202020;
+          color: var(--second-black-color);
         }
       }
     }
@@ -711,7 +712,205 @@
           font-weight: 500;
           font-size: 18px;
           line-height: 133%;
-          color: #202020;
+          color: var(--second-black-color);
+        }
+      }
+    }
+  }
+
+  /* CONTACT US SECTION */
+
+  .contact-us {
+    position: relative;
+    z-index: 90;
+    background-image: url('../img/bg-contact-us.jpg');
+
+    .container {
+      display: flex;
+      gap: 32px;
+
+      .contacts-wrap,
+      .info-wrap {
+        flex: 1 1 calc(50% - 16px);
+      }
+
+      .contacts-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+
+        .conacts-backdrop {
+          padding: 40px;
+          border-radius: 20px;
+          width: 100%;
+
+          max-width: 521px;
+          background-color: var(--white-color);
+
+          .contact-form-style {
+            input,
+            textarea {
+              display: block;
+              border: 1px solid #e3e3e3;
+              border-radius: 25px;
+              padding: 17px 21px;
+              width: 100%;
+              font-weight: 400;
+              font-size: 16px;
+            }
+
+            textarea {
+              margin-bottom: 24px;
+              resize: none;
+              height: 127px;
+            }
+
+            input {
+              margin-bottom: 16px;
+            }
+
+            .inputs-wrap {
+              position: relative;
+            }
+
+            .error-message {
+              position: absolute;
+              color: red;
+              font-size: 10px;
+              bottom: -35px;
+              left: 10px;
+            }
+
+            .checkbox-container {
+              display: flex;
+              align-items: center;
+              line-height: 1;
+              margin-bottom: 24px;
+            }
+
+            .checkbox-container input {
+              display: none;
+            }
+
+            .checkbox-custom {
+              width: 20px;
+              height: 20px;
+              border: 1px solid #626262;
+              display: inline-block;
+              border-radius: 5px;
+              cursor: pointer;
+              margin-right: 10px;
+              position: relative;
+            }
+
+            .checkbox-container input:checked + .checkbox-custom::after {
+              content: '✓';
+              position: absolute;
+              font-size: 18px;
+              left: 2px;
+              top: 0px;
+              color: #626262;
+            }
+
+            .legat-text {
+              font-weight: 400;
+              font-size: 14px;
+              color: var(--second-black-color);
+            }
+
+            .submit-btn {
+              background-color: #d9d9d9;
+              border-radius: 50px;
+              border: none;
+              width: 100%;
+              padding: 16px 20px;
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 125%;
+              text-align: center;
+              color: var(--white-color);
+              cursor: not-allowed;
+            }
+
+            .submit-btn.active {
+              background-color: var(--accent-color);
+              cursor: pointer;
+            }
+          }
+
+          .contact-info {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+
+            /* .photo-wrap {
+              flex-shrink: 0;
+            } */
+
+            .manager-name {
+              margin-bottom: 16px;
+              font-weight: 600;
+              font-size: 28px;
+              line-height: 121%;
+              color: var(--accent-color);
+            }
+
+            .manager-position,
+            .manager-contact {
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 133%;
+              color: var(--second-black-color);
+            }
+
+            .manager-contact.whatsup,
+            .manager-contact.mail {
+              display: flex;
+              gap: 16px;
+              align-items: center;
+              &::before {
+                content: '';
+                display: block;
+                width: 33px;
+                height: 33px;
+              }
+            }
+
+            .manager-contact.whatsup {
+              margin-top: 32px;
+
+              &::before {
+                background-image: url('../img/contacts/whatsup.svg');
+              }
+            }
+
+            .manager-contact.mail {
+              margin-top: 8px;
+              &::before {
+                background-image: url('../img/contacts/mail.svg');
+              }
+            }
+          }
+        }
+      }
+
+      .info-wrap {
+        .section-title {
+          color: var(--white-color);
+          max-width: 480px;
+        }
+        .info-text {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 133%;
+          letter-spacing: 0.01em;
+          color: var(--white-color);
+        }
+
+        .first-info-text {
+          margin-bottom: 16px;
+          margin-top: 104px;
         }
       }
     }
