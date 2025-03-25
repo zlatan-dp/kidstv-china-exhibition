@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .kidstv-china-exhibition {
   --black-color: #000326;
   --second-black-color: #202020;
@@ -5,16 +9,15 @@
   --accent-color: #008cff;
   --trans-dur: 300ms;
   --trans-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --gap: clamp(16px, 1.6vw, 32px);
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: 40px;
+  font-size: clamp(20px, 2vw, 40px);
   line-height: 133%;
-  /* letter-spacing: 0.01em; */
   color: var(--black-color);
   text-align: left;
   background-color: var(--white-color);
-
   max-width: 1920px;
   margin: 0 auto;
 
@@ -82,14 +85,14 @@
 
   .section-title {
     font-weight: 600;
-    font-size: 80px;
+    font-size: clamp(40px, 4vw, 80px);
     line-height: 100%;
     letter-spacing: 0.01em;
     color: var(--accent-color);
   }
 
   .section-title-mb {
-    margin-bottom: 64px;
+    margin-bottom: clamp(32px, 3.3vw, 64px);
   }
 
   /* HEADER */
@@ -110,13 +113,14 @@
 
       .logo {
         font-weight: 600;
-        font-size: 40px;
+        font-size: clamp(32px, 2vw, 40px);
         line-height: 100%;
+        letter-spacing: 0.01em;
       }
 
       .menu-list {
         display: flex;
-        gap: 40px;
+        gap: 2vw;
         align-items: center;
 
         .menu-item {
@@ -125,7 +129,7 @@
 
           .menu-link {
             font-weight: 600;
-            font-size: 20px;
+            font-size: clamp(14px, 1vw, 20px);
             line-height: 120%;
             color: var(--white-color);
           }
@@ -143,11 +147,11 @@
     max-height: 1100px;
 
     .hero-info {
-      max-width: 521px;
+      max-width: 45%;
 
       .hero-title {
         font-weight: 600;
-        font-size: 120px;
+        font-size: clamp(60px, 6.25vw, 120px);
         line-height: 100%;
 
         color: var(--white-color);
@@ -155,14 +159,14 @@
 
       .hero-sub-title {
         font-weight: 600;
-        font-size: 52px;
+        font-size: clamp(26px, 2.7vw, 52px);
         line-height: 120%;
         margin-top: 10px;
         color: var(--white-color);
       }
 
       .hero-text {
-        margin-top: 84px;
+        margin-top: 10%;
         color: var(--white-color);
       }
     }
@@ -175,7 +179,7 @@
 
     .features-list {
       display: flex;
-      gap: 32px;
+      gap: var(--gap);
       flex-wrap: wrap;
       margin-top: 104px;
 
@@ -190,13 +194,30 @@
           left: 8%;
           top: 14%;
           font-weight: 600;
-          font-size: 52px;
+          font-size: clamp(20px, 2.7vw, 52px);
           line-height: 100%;
           letter-spacing: 0.01em;
           color: var(--accent-color);
 
           &.white-color {
             color: var(--white-color);
+          }
+        }
+        .features-link {
+          position: absolute;
+          left: 8%;
+          bottom: 14%;
+          display: block;
+          width: clamp(20px, 2.7vw, 52px);
+          height: clamp(20px, 2.7vw, 52px);
+          background-image: url('../img/arrow.svg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          transition: transform var(--trans-dur) var(--trans-timing-function);
+
+          &:hover,
+          &:focus {
+            transform: scale(1.1);
           }
         }
       }
@@ -251,7 +272,7 @@
     }
 
     .info-wrap {
-      max-width: 500px;
+      max-width: 37%;
     }
   }
 
@@ -300,7 +321,7 @@
       z-index: 35;
       top: 7%;
       left: 7%;
-      max-width: 500px;
+      max-width: 27%;
 
       .section-title {
         color: var(--white-color);
@@ -365,7 +386,7 @@
       z-index: 47;
       top: 7%;
       left: 7%;
-      max-width: 500px;
+      max-width: 27%;
     }
   }
 
@@ -426,7 +447,7 @@
       z-index: 57;
       top: 7%;
       left: 7%;
-      max-width: 500px;
+      max-width: 27%;
     }
   }
 
@@ -439,9 +460,9 @@
 
     .accessories-list {
       display: flex;
-      gap: 32px;
+      gap: var(--gap);
       flex-wrap: wrap;
-      margin-top: 104px;
+      margin-top: clamp(52px, 5.4vw, 104px);
 
       .accessories-item {
         position: relative;
@@ -454,7 +475,7 @@
           left: 5%;
           top: 8%;
           font-weight: 600;
-          font-size: 52px;
+          font-size: clamp(20px, 2.7vw, 52px);
           line-height: 100%;
           letter-spacing: 0.01em;
           color: var(--accent-color);
@@ -475,12 +496,11 @@
     }
 
     .marketing-list {
-      margin-top: 104px;
+      margin-top: clamp(52px, 5.4vw, 104px);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(6, 1fr);
-      grid-gap: 32px;
-
+      grid-gap: var(--gap);
       /* .parent {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -507,7 +527,6 @@
       .div6 {
         grid-area: 4 / 1 / 5 / 3;
       } */
-
       .landing {
         grid-area: 1 / 1 / 4 / 2;
         background-image: url('../img/marketing/landing.png');
@@ -547,6 +566,7 @@
           position: absolute;
           z-index: 70;
           font-size: 28px;
+          font-size: clamp(12px, 1.4vw, 28px);
           font-weight: 600;
         }
 
@@ -583,7 +603,7 @@
         .banners-text {
           color: var(--white-color);
           top: 4%;
-          left: 7%;
+          left: 4%;
         }
       }
     }
@@ -599,26 +619,26 @@
     .faq-list {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: var(--gap);
 
       .faq-item {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: var(--gap);
         background-color: var(--white-color);
-        padding: 40px;
+        padding: clamp(20px, 2vw, 40px);
         border-radius: 20px;
 
         .faq-question {
           font-weight: 600;
-          font-size: 28px;
+          font-size: clamp(18px, 1.4vw, 28px);
           line-height: 121%;
           color: var(--accent-color);
         }
 
         .faq-answer {
           font-weight: 500;
-          font-size: 18px;
+          font-size: clamp(14px, 1vw, 18px);
           line-height: 133%;
           color: var(--second-black-color);
         }
@@ -637,13 +657,13 @@
       color: var(--white-color);
     }
 
-    .benefaits-list {
+    .benefits-list {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: 1.2fr 1fr;
 
-      grid-column-gap: 32px;
-      grid-row-gap: 32px;
+      grid-column-gap: var(--gap);
+      grid-row-gap: var(--gap);
 
       .benefets-item:nth-child(1) {
         grid-area: 1 / 1 / 2 / 3;
@@ -688,14 +708,14 @@
       .benefets-item {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: var(--gap);
         background-color: var(--white-color);
-        padding: 40px;
+        padding: clamp(20px, 2vw, 40px);
         border-radius: 20px;
 
         .benefets-title {
           font-weight: 600;
-          font-size: 120px;
+          font-size: clamp(60px, 6.25vw, 120px);
           line-height: 1;
           letter-spacing: 0.01em;
           color: var(--accent-color);
@@ -703,14 +723,14 @@
 
         .benefets-subtitle {
           font-weight: 600;
-          font-size: 28px;
+          font-size: clamp(18px, 1.4vw, 28px);
           line-height: 121%;
           color: var(--accent-color);
         }
 
         .benefets-text {
           font-weight: 500;
-          font-size: 18px;
+          font-size: clamp(14px, 1vw, 18px);
           line-height: 133%;
           color: var(--second-black-color);
         }
@@ -727,7 +747,7 @@
 
     .container {
       display: flex;
-      gap: 32px;
+      gap: var(--gap);
 
       .contacts-wrap,
       .info-wrap {
@@ -737,11 +757,11 @@
       .contacts-wrap {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: var(--gap);
         align-items: center;
 
         .conacts-backdrop {
-          padding: 40px;
+          padding: clamp(20px, 2vw, 40px);
           border-radius: 20px;
           width: 100%;
 
@@ -841,7 +861,7 @@
 
           .contact-info {
             display: flex;
-            gap: 32px;
+            gap: var(--gap);
             align-items: center;
 
             /* .photo-wrap {
@@ -849,9 +869,9 @@
             } */
 
             .manager-name {
-              margin-bottom: 16px;
+              margin-bottom: clamp(10px, 1vw, 16px);
               font-weight: 600;
-              font-size: 28px;
+              font-size: clamp(18px, 1.4vw, 28px);
               line-height: 121%;
               color: var(--accent-color);
             }
@@ -859,7 +879,7 @@
             .manager-position,
             .manager-contact {
               font-weight: 500;
-              font-size: 18px;
+              font-size: clamp(14px, 1vw, 18px);
               line-height: 133%;
               color: var(--second-black-color);
             }
@@ -867,21 +887,23 @@
             .manager-contact.whatsup,
             .manager-contact.mail {
               display: flex;
-              gap: 16px;
+              gap: clamp(10px, 1vw, 16px);
+
               align-items: center;
               &::before {
                 content: '';
                 display: block;
-                width: 33px;
-                height: 33px;
+                width: clamp(20px, 1.6vw, 32px);
+                height: clamp(20px, 1.6vw, 32px);
               }
             }
 
             .manager-contact.whatsup {
-              margin-top: 32px;
+              margin-top: clamp(16px, 1.6vw, 32px);
 
               &::before {
                 background-image: url('../img/contacts/whatsup.svg');
+                background-size: cover;
               }
             }
 
@@ -889,6 +911,7 @@
               margin-top: 8px;
               &::before {
                 background-image: url('../img/contacts/mail.svg');
+                background-size: cover;
               }
             }
           }
@@ -902,7 +925,7 @@
         }
         .info-text {
           font-weight: 400;
-          font-size: 18px;
+          font-size: clamp(14px, 1vw, 18px);
           line-height: 133%;
           letter-spacing: 0.01em;
           color: var(--white-color);
@@ -910,7 +933,7 @@
 
         .first-info-text {
           margin-bottom: 16px;
-          margin-top: 104px;
+          margin-top: clamp(52px, 5.4vw, 104px);
         }
       }
     }
