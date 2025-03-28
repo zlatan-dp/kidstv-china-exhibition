@@ -3,14 +3,15 @@ html {
 }
 
 @keyframes btnRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(20deg);
-  }
+  0%,
+  10%,
+  20%,
   100% {
     transform: rotate(0deg);
+  }
+  5%,
+  15% {
+    transform: rotate(20deg);
   }
 }
 
@@ -162,10 +163,7 @@ html {
     display: block;
     width: 13vw;
     max-width: 242px;
-    animation-name: btnRotate;
-    animation-duration: 1000ms;
-    animation-timing-function: ease-out;
-    animation-iteration-count: infinite;
+    animation: btnRotate 5s ease-out infinite;
 
     &:hover,
     &:focus {
