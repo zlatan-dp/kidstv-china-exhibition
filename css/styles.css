@@ -28,13 +28,17 @@ html {
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
-  font-size: clamp(20px, 2vw, 40px);
+  font-size: clamp(12px, 4vw, 40px);
   line-height: 133%;
   color: var(--black-color);
   text-align: left;
   background-color: var(--white-color);
   max-width: 1920px;
   margin: 0 auto;
+
+  @media (min-width: 760px) {
+    font-size: clamp(20px, 2vw, 40px);
+  }
 
   p,
   h1,
@@ -60,12 +64,20 @@ html {
   }
 
   section {
-    padding: 7% 0;
+    padding: 12vw 0;
+
+    @media (min-width: 760px) {
+      padding: min(7vw, 146px) 0;
+    }
   }
 
   .container {
     max-width: 100%;
-    padding: 0 7%;
+    padding: 0 10vw;
+
+    @media (min-width: 760px) {
+      padding: 0 min(7vw, 146px);
+    }
   }
 
   .link {
@@ -100,10 +112,14 @@ html {
 
   .section-title {
     font-weight: 600;
-    font-size: clamp(40px, 4vw, 80px);
+    font-size: clamp(24px, 10vw, 64px);
     line-height: 100%;
     letter-spacing: 0.01em;
     color: var(--accent-color);
+
+    @media (min-width: 760px) {
+      font-size: clamp(40px, 4vw, 80px);
+    }
   }
 
   .section-title-mb {
@@ -117,14 +133,34 @@ html {
     z-index: 100;
     width: 100%;
     max-width: 1920px;
-    padding: 12px 0;
+    padding: max(10px, 0.5vw) 0;
     background-color: var(--accent-color);
+
+    @media (min-width: 760px) {
+      padding: min(12px, 0.625vw) 0;
+    }
 
     .container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 40px;
+
+      @media (min-width: 760px) {
+        justify-content: space-between;
+      }
+
+      .mob-menu-btn {
+        position: absolute;
+        left: 3%;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        @media (min-width: 760px) {
+          display: none;
+        }
+      }
 
       .logo {
         font-weight: 600;
@@ -133,20 +169,28 @@ html {
         letter-spacing: 0.01em;
       }
 
-      .menu-list {
-        display: flex;
-        gap: 2vw;
-        align-items: center;
+      .navigation {
+        display: none;
 
-        .menu-item {
+        @media (min-width: 760px) {
+          display: block;
+        }
+
+        .menu-list {
           display: flex;
+          gap: 2vw;
           align-items: center;
 
-          .menu-link {
-            font-weight: 600;
-            font-size: clamp(14px, 1vw, 20px);
-            line-height: 120%;
-            color: var(--white-color);
+          .menu-item {
+            display: flex;
+            align-items: center;
+
+            .menu-link {
+              font-weight: 600;
+              font-size: clamp(14px, 1vw, 20px);
+              line-height: 120%;
+              color: var(--white-color);
+            }
           }
         }
       }
@@ -161,9 +205,13 @@ html {
     right: max(calc((100vw - 1920px) / 2 + 20px), 2vw);
     bottom: min(2vw, 40px);
     display: block;
-    width: 13vw;
+    width: 26vw;
     max-width: 242px;
     animation: btnRotate 5s ease-out infinite;
+
+    @media (min-width: 760px) {
+      width: 13vw;
+    }
 
     &:hover,
     &:focus {
@@ -174,34 +222,61 @@ html {
   /* HERO SECTION */
 
   .hero {
-    background-image: url('../img/bg-hero.jpg');
+    background-image: url('../img/bg-hero-mob.jpg');
     background-size: cover;
-    height: 57vw;
+    height: 176vw;
     max-height: 1100px;
+    padding: 18vw 0;
+
+    @media (min-width: 760px) {
+      padding: min(7vw, 146px) 0;
+      background-image: url('../img/bg-hero.jpg');
+      height: 57vw;
+    }
 
     .hero-info {
-      max-width: 45%;
+      max-width: 100%;
+
+      @media (min-width: 760px) {
+        max-width: 45%;
+      }
 
       .hero-title {
         font-weight: 600;
-        font-size: clamp(60px, 6.25vw, 120px);
+        font-size: clamp(30px, 15vw, 120px);
+
         line-height: 100%;
         color: var(--white-color);
+
+        @media (min-width: 760px) {
+          font-size: clamp(60px, 6.25vw, 120px);
+        }
       }
 
       .hero-sub-title {
         font-weight: 600;
-        font-size: clamp(26px, 2.7vw, 52px);
+        font-size: 7vw;
         line-height: 120%;
         margin-top: 10px;
-        max-width: 80%;
-
+        max-width: 100%;
         color: var(--white-color);
+
+        @media (min-width: 760px) {
+          max-width: 65%;
+          font-size: clamp(26px, 2.7vw, 52px);
+        }
       }
 
       .hero-text {
-        margin-top: 10%;
+        font-size: clamp(12px, 5vw, 40px);
+        margin-top: min(5vw, 104px);
         color: var(--white-color);
+        line-height: 133%;
+        letter-spacing: 0.01em;
+
+        @media (min-width: 760px) {
+          font-size: clamp(20px, 2vw, 40px);
+        }
       }
     }
   }
@@ -215,7 +290,14 @@ html {
       display: flex;
       gap: var(--gap);
       flex-wrap: wrap;
-      margin-top: 104px;
+      flex-direction: column;
+
+      margin-top: min(13vw, 52px);
+
+      @media (min-width: 760px) {
+        flex-direction: row;
+        margin-top: min(5.5vw, 104px);
+      }
 
       .features-item {
         position: relative;
@@ -225,16 +307,22 @@ html {
 
         .features-text {
           position: absolute;
-          left: 8%;
-          top: 14%;
+          left: 6%;
+          top: 8%;
           font-weight: 600;
-          font-size: clamp(20px, 2.7vw, 52px);
+          font-size: clamp(12px, 5vw, 40px);
           line-height: 100%;
           letter-spacing: 0.01em;
           color: var(--accent-color);
 
           &.white-color {
             color: var(--white-color);
+          }
+
+          @media (min-width: 760px) {
+            font-size: clamp(20px, 2.7vw, 52px);
+            left: 8%;
+            top: 14%;
           }
         }
         .features-link {
