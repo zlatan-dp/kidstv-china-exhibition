@@ -2,6 +2,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes btnRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .kidstv-china-exhibition {
   --black-color: #000326;
   --second-black-color: #202020;
@@ -10,6 +22,8 @@ html {
   --trans-dur: 300ms;
   --trans-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   --gap: clamp(16px, 1.6vw, 32px);
+
+  position: relative;
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -138,6 +152,27 @@ html {
     }
   }
 
+  /* Get in Touch */
+
+  .get-in-touch {
+    position: fixed;
+    z-index: 111;
+    right: max(calc((100vw - 1920px) / 2 + 20px), 2vw);
+    bottom: min(2vw, 40px);
+    display: block;
+    width: 13vw;
+    max-width: 242px;
+    animation-name: btnRotate;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+
+    &:hover,
+    &:focus {
+      animation-play-state: paused;
+    }
+  }
+
   /* HERO SECTION */
 
   .hero {
@@ -153,7 +188,6 @@ html {
         font-weight: 600;
         font-size: clamp(60px, 6.25vw, 120px);
         line-height: 100%;
-
         color: var(--white-color);
       }
 
@@ -162,6 +196,8 @@ html {
         font-size: clamp(26px, 2.7vw, 52px);
         line-height: 120%;
         margin-top: 10px;
+        max-width: 80%;
+
         color: var(--white-color);
       }
 
