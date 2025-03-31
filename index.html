@@ -100,7 +100,10 @@
 
         <section class="frame section-top-border" id="buildable-block">
           <div class="move-here-frame">
-            <img src="./img/frame/frame-move.png" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/frame/frame-tap.png" />
+              <img src="./img/frame/frame-move.png" alt="move or tap here" />
+            </picture>
           </div>
           <div class="tv-wrap">
             <img src="./img/frame/frame-tv-0.png" class="tv-0" alt="KidsTV" />
@@ -121,20 +124,31 @@
 
         <section class="night-light section-top-border" id="night-light-section">
           <div class="night-light-img-first">
-            <img src="./img/night/bg-night-1.jpg" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/night/bg-night-1-mob.jpg" />
+              <img src="./img/night/bg-night-1.jpg" alt="Built-in Night Light" />
+            </picture>
           </div>
           <div class="move-here-night">
-            <img src="./img/night/move-here.png" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/night/tap-here.png" />
+              <img src="./img/night/move-here.png" alt="tap or move here" />
+            </picture>
           </div>
           <div class="night-light-img-second hidden">
-            <img src="./img/night/bg-night-2.jpg" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/night/bg-night-2-mob.jpg" />
+              <img src="./img/night/bg-night-2.jpg" alt="Built-in Night Light" />
+            </picture>
           </div>
           <div class="night-light-trigger"></div>
           <div class="info-wrap">
             <h2 class="section-title section-title-mb white-color">Built-in Night Light</h2>
             <p class="white-color">
-              Adds unique customer value, creating <br />extra selling <br />points and<br />driving
-              <br />easy sales.
+              Adds unique customer
+              <span class="night-light-text"
+                >value, creating extra selling points and driving easy sales.</span
+              >
             </p>
           </div>
         </section>
