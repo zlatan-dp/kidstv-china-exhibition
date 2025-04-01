@@ -933,8 +933,12 @@ html {
         flex-direction: column;
         gap: var(--gap);
         background-color: var(--white-color);
-        padding: clamp(20px, 2vw, 40px);
+        padding: clamp(20px, 5vw, 40px);
         border-radius: 20px;
+
+        @media (min-width: 760px) {
+          padding: clamp(20px, 2vw, 40px);
+        }
 
         .faq-question-wrap {
           display: flex;
@@ -1003,81 +1007,124 @@ html {
     }
 
     .benefits-list {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: 1.2fr 1fr;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
 
-      grid-column-gap: var(--gap);
-      grid-row-gap: var(--gap);
-
-      .benefets-item:nth-child(1) {
-        grid-area: 1 / 1 / 2 / 3;
-      }
-      .benefets-item:nth-child(2) {
-        grid-area: 1 / 3 / 2 / 5;
-      }
-      .benefets-item:nth-child(3) {
-        grid-area: 1 / 5 / 2 / 7;
-      }
-      .benefets-item:nth-child(4) {
-        grid-area: 2 / 1 / 3 / 4;
-      }
-      .benefets-item:nth-child(5) {
-        grid-area: 2 / 4 / 3 / 7;
-      }
-
-      /* .parent {
+      @media (min-width: 760px) {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        grid-column-gap: 32px;
-        grid-row-gap: 32px;
-      }
+        grid-column-gap: var(--gap);
+        grid-row-gap: var(--gap);
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 1.2fr 1fr;
 
-      .div1 {
-        grid-area: 1 / 1 / 2 / 2;
+        .benefets-item:nth-child(1) {
+          grid-area: 1 / 1 / 2 / 3;
+        }
+        .benefets-item:nth-child(2) {
+          grid-area: 1 / 3 / 2 / 5;
+        }
+        .benefets-item:nth-child(3) {
+          grid-area: 1 / 5 / 2 / 7;
+        }
+        .benefets-item:nth-child(4) {
+          grid-area: 2 / 1 / 3 / 4;
+        }
+        .benefets-item:nth-child(5) {
+          grid-area: 2 / 4 / 3 / 7;
+        }
       }
-      .div2 {
-        grid-area: 2 / 1 / 3 / 2;
-      }
-      .div3 {
-        grid-area: 3 / 1 / 4 / 2;
-      }
-      .div4 {
-        grid-area: 4 / 1 / 5 / 2;
-      }
-      .div5 {
-        grid-area: 5 / 1 / 6 / 2;
-      } */
 
       .benefets-item {
         display: flex;
         flex-direction: column;
         gap: var(--gap);
         background-color: var(--white-color);
-        padding: clamp(20px, 2vw, 40px);
+        padding: clamp(20px, 5vw, 40px);
         border-radius: 20px;
+
+        @media (min-width: 760px) {
+          padding: clamp(20px, 2vw, 40px);
+        }
 
         .benefets-title {
           font-weight: 600;
-          font-size: clamp(60px, 6.25vw, 120px);
+          font-size: clamp(60px, 16vw, 120px);
           line-height: 1;
           letter-spacing: 0.01em;
           color: var(--accent-color);
+
+          @media (min-width: 760px) {
+            font-size: clamp(60px, 6.25vw, 120px);
+          }
         }
 
         .benefets-subtitle {
           font-weight: 600;
-          font-size: clamp(18px, 1.4vw, 28px);
+          font-size: clamp(18px, 5vw, 28px);
           line-height: 121%;
           color: var(--accent-color);
+
+          @media (min-width: 760px) {
+            font-size: clamp(18px, 1.4vw, 28px);
+          }
         }
 
         .benefets-text {
           font-weight: 500;
-          font-size: clamp(14px, 1vw, 18px);
+          font-size: clamp(14px, 3vw, 18px);
           line-height: 133%;
           color: var(--second-black-color);
+
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; /* Кількість рядків до обрізання */
+          -webkit-box-orient: vertical;
+
+          @media (min-width: 760px) {
+            font-size: clamp(14px, 1vw, 18px);
+            -webkit-line-clamp: unset; /* Відключає обмеження рядків */
+            overflow: visible;
+            text-overflow: unset;
+          }
+
+          &.expanded {
+            -webkit-line-clamp: unset; /* Відключає обмеження рядків */
+            overflow: visible;
+            text-overflow: unset;
+          }
+        }
+
+        .show-more-wrap {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+          align-items: center;
+          cursor: pointer;
+
+          @media (min-width: 760px) {
+            display: none;
+          }
+
+          .show-more-text {
+            align-self: center;
+            font-weight: 500;
+            font-size: clamp(14px, 3vw, 18px);
+            line-height: 133%;
+            color: var(--accent-color);
+          }
+
+          .benefits-icon {
+            flex-shrink: 0;
+            width: max(5vw, 25px);
+            height: max(5vw, 25px);
+            transition: transform var(--trans-dur) var(--trans-timing-function);
+
+            &.rotated {
+              transform: rotate(180deg);
+            }
+          }
         }
       }
     }

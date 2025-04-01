@@ -236,8 +236,6 @@ function faqAnimation(wrap) {
 }
 
 function handleFaqClick(event) {
-  console.log(event.currentTarget);
-
   faqAnimation(event.currentTarget);
 }
 
@@ -261,6 +259,45 @@ function updateFaqListeners() {
   }
 }
 
+// Benefits animation
+
+const showMoreWraps = document.querySelectorAll('.show-more-wrap');
+
+function benefitsShow(wrap) {
+  const benefitsText = wrap.previousElementSibling;
+  const icon = wrap.querySelector('.benefits-icon');
+  const text = wrap.querySelector('.show-more-text');
+
+  benefitsText.classList.toggle('expanded');
+  icon.classList.toggle('rotated');
+
+  text.textContent = benefitsText.classList.contains('expanded') ? 'Show Less' : 'Show More';
+}
+
+function handleShowMoreClick(event) {
+  benefitsShow(event.currentTarget);
+}
+
+function addBenefitsListener() {
+  showMoreWraps.forEach(wrap => {
+    wrap.addEventListener('click', handleShowMoreClick);
+  });
+}
+
+function removeBenefitsListener() {
+  showMoreWraps.forEach(wrap => {
+    wrap.removeEventListener('click', handleShowMoreClick);
+  });
+}
+
+function updateBenefitsListener() {
+  if (isMobile()) {
+    addBenefitsListener();
+  } else {
+    removeBenefitsListener();
+  }
+}
+
 // Update Listeners
 
 function updateListeners() {
@@ -274,6 +311,7 @@ function updateListeners() {
   addStandListeners();
   updateStandVideoSrc();
   updateFaqListeners();
+  updateBenefitsListener();
 }
 
 let resizeTimeout;
