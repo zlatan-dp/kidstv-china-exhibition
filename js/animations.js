@@ -223,6 +223,44 @@ function updateStandVideoSrc() {
   }
 }
 
+// Faq animation
+
+const questionWraps = document.querySelectorAll('.faq-question-wrap');
+
+function faqAnimation(wrap) {
+  const answer = wrap.nextElementSibling;
+  const icon = wrap.querySelector('.question-icon');
+
+  answer.classList.toggle('active');
+  icon.classList.toggle('rotated');
+}
+
+function handleFaqClick(event) {
+  console.log(event.currentTarget);
+
+  faqAnimation(event.currentTarget);
+}
+
+function addFaqListener() {
+  questionWraps.forEach(wrap => {
+    wrap.addEventListener('click', handleFaqClick);
+  });
+}
+
+function removeFaqListener() {
+  questionWraps.forEach(wrap => {
+    wrap.removeEventListener('click', handleFaqClick);
+  });
+}
+
+function updateFaqListeners() {
+  if (isMobile()) {
+    addFaqListener();
+  } else {
+    removeFaqListener();
+  }
+}
+
 // Update Listeners
 
 function updateListeners() {
@@ -235,6 +273,7 @@ function updateListeners() {
   removeStandListeners();
   addStandListeners();
   updateStandVideoSrc();
+  updateFaqListeners();
 }
 
 let resizeTimeout;
@@ -244,4 +283,3 @@ window.addEventListener('resize', () => {
 });
 
 updateListeners();
-updateStandVideoSrc();
