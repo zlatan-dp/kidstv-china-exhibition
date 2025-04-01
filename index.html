@@ -154,11 +154,12 @@
         </section>
 
         <section class="protective section-top-border" id="protective-section">
-          <div class="protective-fx">
-            <img src="./img/white-fx.png" alt="" />
-          </div>
+          <div class="protective-fx"></div>
           <div class="move-here-protective">
-            <img src="./img/protective/move-here.png" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/protective/tap-here.png" />
+              <img src="./img/protective/move-here.png" alt="move or tap here" />
+            </picture>
           </div>
           <div class="protective-video hidden">
             <video muted loop playsinline>
@@ -173,20 +174,22 @@
         </section>
 
         <section class="stand section-top-border" id="reliable-stands">
-          <div class="stand-fx">
-            <img src="./img/white-fx.png" alt="" />
-          </div>
+          <div class="stand-fx"></div>
           <div class="move-here-stand">
-            <img src="./img/stand/move-here.png" alt="" />
+            <picture>
+              <source media="(max-width: 759px)" srcset="./img/stand/tap-here.png" />
+              <img src="./img/stand/move-here.png" alt="move or tap here" />
+            </picture>
           </div>
           <div class="stand-video hidden">
-            <video muted loop playsinline>
-              <source src="./img/stand/stand.mp4" type="video/mp4" />
-            </video>
+            <video muted loop playsinline></video>
           </div>
           <div class="stand-trigger"></div>
           <div class="info-wrap">
-            <h2 class="section-title section-title-mb">Reliable Stand</h2>
+            <h2 class="section-title section-title-mb">
+              Reliable<br />
+              Stand
+            </h2>
             <p>Safety and stability to instantly win customer trust.</p>
           </div>
         </section>
@@ -415,7 +418,6 @@
     </div>
 
     <script src="./js/animations.js"></script>
-    <script src="./js/video.js"></script>
     <script src="./js/submit.js"></script>
   </body>
 </html>

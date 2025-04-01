@@ -98,16 +98,14 @@ html {
   }
 
   .section-top-border {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-top: -20px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: -30px;
     overflow: hidden;
 
-    @media (min-width: 760px) {
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
+    /* @media (min-width: 760px) {
       margin-top: -30px;
-    }
+    } */
   }
 
   .section-title {
@@ -352,7 +350,7 @@ html {
     position: relative;
     background-image: url('../img/frame/frame-bg-mob.jpg');
     background-size: cover;
-    height: 176vw;
+    height: 170vw;
 
     @media (min-width: 760px) {
       background-image: url('../img/frame/frame-bg.jpg');
@@ -431,7 +429,7 @@ html {
   .night-light {
     padding: 0;
     position: relative;
-    height: 176vw;
+    height: 172vw;
 
     @media (min-width: 760px) {
       height: 57vw;
@@ -516,32 +514,58 @@ html {
     padding: 0;
     position: relative;
     z-index: 40;
-    background-image: url('../img/protective/bg-protective.jpg');
+    background-image: url('../img/protective/bg-protective-mob.jpg');
     background-size: cover;
-    height: 57vw;
-    max-height: 1100px;
+    height: 176vw;
+
+    @media (min-width: 760px) {
+      background-image: url('../img/protective/bg-protective.jpg');
+      height: 57vw;
+      max-height: 1100px;
+    }
 
     .protective-fx {
+      background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 32.91%),
+        linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 36.14%);
       position: absolute;
       width: 100%;
+      height: 113vw;
       z-index: 43;
+      bottom: 0;
+
+      @media (min-width: 760px) {
+        top: 0;
+        height: 100%;
+      }
     }
 
     .move-here-protective {
       position: absolute;
       z-index: 45;
-      width: 14%;
-      right: 33%;
-      top: 53%;
+      width: 39%;
+      right: 53%;
+      top: 45%;
       transition: opacity var(--trans-dur) var(--trans-timing-function);
+
+      @media (min-width: 760px) {
+        width: 14%;
+        right: 33%;
+        top: 53%;
+      }
     }
 
     .protective-video {
-      position: relative;
+      position: absolute;
       z-index: 42;
-      height: 100%;
+      width: 100%;
       overflow: hidden;
+      height: 113vw;
+      bottom: 0;
       transition: opacity var(--trans-dur) var(--trans-timing-function);
+
+      @media (min-width: 760px) {
+        height: auto;
+      }
 
       video {
         width: 100%;
@@ -555,11 +579,18 @@ html {
       position: absolute;
       z-index: 44;
       background-color: transparent;
-      width: 20%;
-      height: 21%;
-      top: 40%;
-      left: 50%;
+      width: 36%;
+      height: 12%;
+      top: 62%;
+      left: 52%;
       transform: translateX(-50%);
+
+      @media (min-width: 760px) {
+        width: 20%;
+        height: 21%;
+        top: 40%;
+        left: 50%;
+      }
     }
 
     .info-wrap {
@@ -567,7 +598,11 @@ html {
       z-index: 47;
       top: 7%;
       left: 7%;
-      max-width: 27%;
+      max-width: 90%;
+
+      @media (min-width: 760px) {
+        max-width: 27%;
+      }
     }
   }
 
@@ -577,32 +612,58 @@ html {
     padding: 0;
     position: relative;
     z-index: 50;
-    background-image: url('../img/stand/bg-stand.jpg');
+    background-image: url('../img/stand/bg-stand-mob.jpg');
     background-size: cover;
-    height: 57vw;
-    max-height: 1100px;
+    height: 176vw;
+
+    @media (min-width: 760px) {
+      background-image: url('../img/stand/bg-stand.jpg');
+      height: 57vw;
+      max-height: 1100px;
+    }
 
     .stand-fx {
+      background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 32.91%),
+        linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 36.14%);
       position: absolute;
       width: 100%;
+      height: 113vw;
       z-index: 53;
+      bottom: 0;
+
+      @media (min-width: 760px) {
+        top: 0;
+        height: 100%;
+      }
     }
 
     .move-here-stand {
       position: absolute;
       z-index: 55;
-      width: 14%;
+      width: 39%;
       right: 21%;
-      top: 65%;
+      top: 70%;
       transition: opacity var(--trans-dur) var(--trans-timing-function);
+
+      @media (min-width: 760px) {
+        width: 14%;
+        right: 21%;
+        top: 65%;
+      }
     }
 
     .stand-video {
-      position: relative;
+      position: absolute;
       z-index: 52;
-      height: 100%;
       overflow: hidden;
+      height: 113vw;
+      width: 100%;
+      bottom: 0;
       transition: opacity var(--trans-dur) var(--trans-timing-function);
+
+      @media (min-width: 760px) {
+        height: auto;
+      }
 
       video {
         width: 100%;
@@ -616,11 +677,18 @@ html {
       position: absolute;
       z-index: 54;
       background-color: transparent;
-      width: 20%;
-      height: 21%;
-      top: 60%;
-      left: 72%;
+      width: 30%;
+      height: 11%;
+      top: 70%;
+      left: 80%;
       transform: translateX(-50%);
+
+      @media (min-width: 760px) {
+        width: 20%;
+        height: 21%;
+        top: 60%;
+        left: 72%;
+      }
     }
 
     .info-wrap {
@@ -628,7 +696,11 @@ html {
       z-index: 57;
       top: 7%;
       left: 7%;
-      max-width: 27%;
+      max-width: 90%;
+
+      @media (min-width: 760px) {
+        max-width: 27%;
+      }
     }
   }
 
