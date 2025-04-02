@@ -121,7 +121,11 @@ html {
   }
 
   .section-title-mb {
-    margin-bottom: clamp(32px, 3.3vw, 64px);
+    margin-bottom: clamp(32px, 10vw, 64px);
+
+    @media (min-width: 760px) {
+      margin-bottom: clamp(32px, 3.3vw, 64px);
+    }
   }
 
   /* HEADER */
@@ -203,7 +207,7 @@ html {
     right: max(calc((100vw - 1920px) / 2 + 20px), 2vw);
     bottom: min(2vw, 40px);
     display: block;
-    width: 26vw;
+    width: min(26vw, 110px);
     max-width: 242px;
     animation: btnRotate 5s ease-out infinite;
 
@@ -1079,6 +1083,7 @@ html {
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
+          line-clamp: 2;
           -webkit-line-clamp: 2; /* Кількість рядків до обрізання */
           -webkit-box-orient: vertical;
 
@@ -1090,6 +1095,7 @@ html {
           }
 
           &.expanded {
+            line-clamp: none;
             -webkit-line-clamp: unset; /* Відключає обмеження рядків */
             overflow: visible;
             text-overflow: unset;
@@ -1135,11 +1141,34 @@ html {
   .contact-us {
     position: relative;
     z-index: 90;
-    background-image: url('../img/bg-contact-us.jpg');
+    background-image: url('../img/bg-contact-us-mob.jpg');
+    background-position: center;
+
+    @media (min-width: 760px) {
+      background-image: url('../img/bg-contact-us.jpg');
+    }
 
     .container {
       display: flex;
-      gap: var(--gap);
+      gap: min(10vw, 52px);
+      flex-direction: column-reverse;
+
+      @media (min-width: 760px) {
+        flex-direction: row;
+        gap: var(--gap);
+      }
+
+      .info-text-mob {
+        font-weight: 400;
+        font-size: clamp(14px, 4vw, 18px);
+        line-height: 133%;
+        letter-spacing: 0.01em;
+        color: var(--white-color);
+
+        @media (min-width: 760px) {
+          display: none;
+        }
+      }
 
       .contacts-wrap,
       .info-wrap {
@@ -1148,17 +1177,24 @@ html {
 
       .contacts-wrap {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: var(--gap);
         align-items: center;
+
+        @media (min-width: 760px) {
+          flex-direction: column;
+        }
 
         .conacts-backdrop {
           padding: clamp(20px, 2vw, 40px);
           border-radius: 20px;
           width: 100%;
-
-          max-width: 521px;
+          max-width: 360px;
           background-color: var(--white-color);
+
+          @media (min-width: 760p) {
+            max-width: 521px;
+          }
 
           .contact-form-style {
             input,
@@ -1255,55 +1291,92 @@ html {
             display: flex;
             gap: var(--gap);
             align-items: center;
+            flex-direction: column;
+
+            @media (min-width: 760px) {
+              flex-direction: row;
+            }
+
+            .contact-photo-wrap {
+              width: min(24vw, 120px);
+            }
 
             /* .photo-wrap {
               flex-shrink: 0;
             } */
 
-            .manager-name {
-              margin-bottom: clamp(10px, 1vw, 16px);
-              font-weight: 600;
-              font-size: clamp(18px, 1.4vw, 28px);
-              line-height: 121%;
-              color: var(--accent-color);
-            }
-
-            .manager-position,
-            .manager-contact {
-              font-weight: 500;
-              font-size: clamp(14px, 1vw, 18px);
-              line-height: 133%;
-              color: var(--second-black-color);
-            }
-
-            .manager-contact.whatsup,
-            .manager-contact.mail {
+            .contact-info-wrap {
               display: flex;
-              gap: clamp(10px, 1vw, 16px);
-
+              flex-direction: column;
               align-items: center;
-              &::before {
-                content: '';
-                display: block;
-                width: clamp(20px, 1.6vw, 32px);
-                height: clamp(20px, 1.6vw, 32px);
+
+              @media (min-width: 760px) {
+                align-items: flex-start;
               }
-            }
 
-            .manager-contact.whatsup {
-              margin-top: clamp(16px, 1.6vw, 32px);
+              .manager-name {
+                margin-bottom: clamp(10px, 1vw, 16px);
+                font-weight: 600;
+                font-size: clamp(18px, 6.4vw, 28px);
+                line-height: 121%;
+                color: var(--accent-color);
 
-              &::before {
-                background-image: url('../img/contacts/whatsup.svg');
-                background-size: cover;
+                @media (min-width: 760px) {
+                  font-size: clamp(18px, 1.4vw, 28px);
+                }
               }
-            }
 
-            .manager-contact.mail {
-              margin-top: 8px;
-              &::before {
-                background-image: url('../img/contacts/mail.svg');
-                background-size: cover;
+              .manager-position,
+              .manager-contact {
+                font-weight: 500;
+                font-size: clamp(14px, 4vw, 18px);
+                line-height: 133%;
+                color: var(--second-black-color);
+
+                @media (min-width: 760px) {
+                  font-size: clamp(14px, 1vw, 18px);
+                }
+              }
+
+              .manager-position {
+                text-align: center;
+
+                @media (min-width: 760px) {
+                  text-align: left;
+                }
+              }
+
+              .manager-socials-wrap {
+                margin-top: clamp(16px, 1.6vw, 32px);
+
+                .manager-contact.whatsup,
+                .manager-contact.mail {
+                  display: flex;
+                  gap: clamp(10px, 1vw, 16px);
+
+                  align-items: center;
+                  &::before {
+                    content: '';
+                    display: block;
+                    width: clamp(20px, 1.6vw, 32px);
+                    height: clamp(20px, 1.6vw, 32px);
+                  }
+                }
+
+                .manager-contact.whatsup {
+                  &::before {
+                    background-image: url('../img/contacts/whatsup.svg');
+                    background-size: cover;
+                  }
+                }
+
+                .manager-contact.mail {
+                  margin-top: 8px;
+                  &::before {
+                    background-image: url('../img/contacts/mail.svg');
+                    background-size: cover;
+                  }
+                }
               }
             }
           }
@@ -1317,15 +1390,32 @@ html {
         }
         .info-text {
           font-weight: 400;
-          font-size: clamp(14px, 1vw, 18px);
+          font-size: clamp(14px, 4vw, 18px);
           line-height: 133%;
           letter-spacing: 0.01em;
           color: var(--white-color);
+
+          @media (min-width: 760px) {
+            font-size: clamp(14px, 1vw, 18px);
+          }
         }
 
         .first-info-text {
+          display: none;
           margin-bottom: 16px;
           margin-top: clamp(52px, 5.4vw, 104px);
+
+          @media (min-width: 760px) {
+            display: block;
+          }
+        }
+
+        .second-info-text {
+          margin-top: clamp(18px, 8.5vw, 44px);
+
+          @media (min-width: 760px) {
+            margin-top: 0;
+          }
         }
       }
     }

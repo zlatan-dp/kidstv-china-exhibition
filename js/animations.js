@@ -208,15 +208,30 @@ function removeStandListeners() {
   standTrigger.removeEventListener('click', handleStandClick);
 }
 
-// Update video source
+// Update PROTECTIVE video source
 
-const sources = {
+const sourcesProtective = {
+  mobile: './img/protective/protective_mob.mp4',
+  desctop: './img/protective/protective.mp4',
+};
+
+function updateProtectiveVideoSrc() {
+  const newSrc = isMobile() ? sourcesProtective.mobile : sourcesProtective.desctop;
+  if (protectiveVideo.src !== newSrc) {
+    protectiveVideo.src = newSrc;
+    protectiveVideo.load();
+  }
+}
+
+// Update STAND video source
+
+const sourcesStand = {
   mobile: './img/stand/stand_mob.mp4',
   desctop: './img/stand/stand.mp4',
 };
 
 function updateStandVideoSrc() {
-  const newSrc = isMobile() ? sources.mobile : sources.desctop;
+  const newSrc = isMobile() ? sourcesStand.mobile : sourcesStand.desctop;
   if (standVideo.src !== newSrc) {
     standVideo.src = newSrc;
     standVideo.load();
@@ -309,6 +324,7 @@ function updateListeners() {
   addProtectiveListeners();
   removeStandListeners();
   addStandListeners();
+  updateProtectiveVideoSrc();
   updateStandVideoSrc();
   updateFaqListeners();
   updateBenefitsListener();
