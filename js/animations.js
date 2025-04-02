@@ -93,9 +93,20 @@ const standTrigger = document.querySelector('.stand-trigger');
 const standVideoWrap = document.querySelector('.stand-video');
 const standVideo = document.querySelector('.stand-video video');
 
+// function playVideo(video) {
+//   if (video.readyState >= 2 && video.paused) {
+//     video.play();
+//   }
+// }
+
 function playVideo(video) {
-  if (video.readyState >= 2 && video.paused) {
-    video.play();
+  if (video.paused) {
+    // Для Safari: Якщо відео зависає, оновлюємо src
+    if (video.readyState < 2) {
+      video.load();
+    }
+
+    video.play().catch(error => console.warn('Playback error:', error));
   }
 }
 
@@ -106,9 +117,17 @@ function stopVideoHover(moveHere, trigger, video) {
   }
 }
 
+// function stopVideoClick(video) {
+//   video.pause();
+//   video.currentTime = 0;
+// }
+
 function stopVideoClick(video) {
   video.pause();
   video.currentTime = 0;
+
+  // Для iOS Safari: Примусово оновлюємо відео після паузи
+  video.src = video.src;
 }
 
 function toggleHiddenVideo(moveHere, wrap) {
@@ -129,7 +148,8 @@ function mouseLeaveVideo(moveHere, trigger, video, videoWrap) {
 function mouseClickVideo(video, moveHere, videoWrap) {
   if (video.paused) {
     toggleHiddenVideo(moveHere, videoWrap);
-    playVideo(video);
+    // playVideo(video);
+    requestAnimationFrame(() => playVideo(video)); // Використовуємо requestAnimationFrame для плавного старту
   } else {
     stopVideoClick(video);
     toggleHiddenVideo(moveHere, videoWrap);
