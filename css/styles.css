@@ -1192,7 +1192,7 @@ html {
           max-width: 360px;
           background-color: var(--white-color);
 
-          @media (min-width: 760p) {
+          @media (min-width: 760px) {
             max-width: 521px;
           }
 
@@ -1226,8 +1226,9 @@ html {
               position: absolute;
               color: red;
               font-size: 10px;
-              bottom: -35px;
+              bottom: -13px;
               left: 10px;
+              line-height: 1;
             }
 
             .checkbox-container {
@@ -1299,12 +1300,12 @@ html {
 
             .contact-photo-wrap {
               width: min(24vw, 120px);
+
+              @media (min-width: 760px) {
+                width: min(6.2vw, 120px);
+                flex-shrink: 0;
+              }
             }
-
-            /* .photo-wrap {
-              flex-shrink: 0;
-            } */
-
             .contact-info-wrap {
               display: flex;
               flex-direction: column;
