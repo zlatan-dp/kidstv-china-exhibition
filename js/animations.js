@@ -100,13 +100,9 @@ const standVideo = document.querySelector('.stand-video video');
 // }
 
 function playVideo(video) {
-  if (video.paused) {
-    // Для Safari: Якщо відео зависає, оновлюємо src
-    if (video.readyState < 2) {
-      video.load();
-    }
-
-    video.play().catch(error => console.warn('Playback error:', error));
+  if (video.readyState >= 2 && video.paused) {
+    video.src = video.src;
+    video.play().catch(error => console.warn('Playback error:', error)); // Додаємо `catch()`
   }
 }
 
@@ -124,10 +120,8 @@ function stopVideoHover(moveHere, trigger, video) {
 
 function stopVideoClick(video) {
   video.pause();
-  video.currentTime = 0;
-
-  // Для iOS Safari: Примусово оновлюємо відео після паузи
-  video.src = video.src;
+  video.currentTime = 0.01; // Замість `0`, бо Safari може фрізити
+  video.load(); // Перезавантаження для iOS
 }
 
 function toggleHiddenVideo(moveHere, wrap) {
@@ -148,8 +142,7 @@ function mouseLeaveVideo(moveHere, trigger, video, videoWrap) {
 function mouseClickVideo(video, moveHere, videoWrap) {
   if (video.paused) {
     toggleHiddenVideo(moveHere, videoWrap);
-    // playVideo(video);
-    requestAnimationFrame(() => playVideo(video)); // Використовуємо requestAnimationFrame для плавного старту
+    playVideo(video);
   } else {
     stopVideoClick(video);
     toggleHiddenVideo(moveHere, videoWrap);
