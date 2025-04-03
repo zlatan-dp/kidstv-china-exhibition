@@ -350,15 +350,3 @@ window.addEventListener('resize', () => {
 });
 
 updateListeners();
-
-document.addEventListener('visibilitychange', function () {
-  if (!document.hidden) {
-    playVideo(protectiveVideo);
-    playVideo(standVideo);
-  }
-});
-
-window.addEventListener('focus', function () {
-  playVideo(protectiveVideo);
-  playVideo(standVideo);
-});
