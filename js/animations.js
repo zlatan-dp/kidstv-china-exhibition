@@ -93,16 +93,9 @@ const standTrigger = document.querySelector('.stand-trigger');
 const standVideoWrap = document.querySelector('.stand-video');
 const standVideo = document.querySelector('.stand-video video');
 
-// function playVideo(video) {
-//   if (video.readyState >= 2 && video.paused) {
-//     video.play();
-//   }
-// }
-
 function playVideo(video) {
   if (video.readyState >= 2 && video.paused) {
-    video.load();
-    video.play().catch(error => console.warn('Playback error:', error)); // Додаємо `catch()`
+    video.play();
   }
 }
 
@@ -113,15 +106,9 @@ function stopVideoHover(moveHere, trigger, video) {
   }
 }
 
-// function stopVideoClick(video) {
-//   video.pause();
-//   video.currentTime = 0;
-// }
-
 function stopVideoClick(video) {
   video.pause();
-  video.currentTime = 0.01; // Замість `0`, бо Safari може фрізити
-  video.load(); // Перезавантаження для iOS
+  video.currentTime = 0;
 }
 
 function toggleHiddenVideo(moveHere, wrap) {
@@ -147,6 +134,7 @@ function mouseClickVideo(video, moveHere, videoWrap) {
     stopVideoClick(video);
     toggleHiddenVideo(moveHere, videoWrap);
   }
+  return;
 }
 
 // Protective video
@@ -230,7 +218,9 @@ const sourcesProtective = {
 
 function updateProtectiveVideoSrc() {
   const newSrc = isMobile() ? sourcesProtective.mobile : sourcesProtective.desctop;
-  if (protectiveVideo.src !== newSrc) {
+  const absoluteNewSrc = new URL(newSrc, window.location.href).href;
+
+  if (protectiveVideo.src !== absoluteNewSrc) {
     protectiveVideo.src = newSrc;
     protectiveVideo.load();
   }
@@ -245,7 +235,9 @@ const sourcesStand = {
 
 function updateStandVideoSrc() {
   const newSrc = isMobile() ? sourcesStand.mobile : sourcesStand.desctop;
-  if (standVideo.src !== newSrc) {
+  const absoluteNewSrc = new URL(newSrc, window.location.href).href;
+
+  if (standVideo.src !== absoluteNewSrc) {
     standVideo.src = newSrc;
     standVideo.load();
   }
@@ -329,6 +321,8 @@ function updateBenefitsListener() {
 // Update Listeners
 
 function updateListeners() {
+  console.log('resize');
+
   removeFrameListeners();
   addFrameListeners();
   removeNightListeners();
@@ -344,9 +338,16 @@ function updateListeners() {
 }
 
 let resizeTimeout;
+let lastWidth = window.innerWidth < 760 ? 'mobile' : 'desktop';
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(updateListeners, 200);
+  resizeTimeout = setTimeout(() => {
+    const currentWidth = window.innerWidth < 760 ? 'mobile' : 'desktop';
+    if (lastWidth !== currentWidth) {
+      lastWidth = currentWidth;
+      updateListeners();
+    }
+  }, 200);
 });
 
 updateListeners();
