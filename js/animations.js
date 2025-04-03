@@ -224,7 +224,7 @@ function removeStandListeners() {
 // Update PROTECTIVE video source
 
 const sourcesProtective = {
-  mobile: './img/protective/protective_mob.mp4',
+  mobile: './img/protective/video1.mp4',
   desctop: './img/protective/protective.mp4',
 };
 
