@@ -75,6 +75,11 @@ html {
     }
   }
 
+  video {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
   .container {
     max-width: 100%;
     padding: 0 10vw;

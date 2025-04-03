@@ -101,7 +101,7 @@ const standVideo = document.querySelector('.stand-video video');
 
 function playVideo(video) {
   if (video.readyState >= 2 && video.paused) {
-    video.src = video.src;
+    video.load();
     video.play().catch(error => console.warn('Playback error:', error)); // Додаємо `catch()`
   }
 }
@@ -224,7 +224,7 @@ function removeStandListeners() {
 // Update PROTECTIVE video source
 
 const sourcesProtective = {
-  mobile: './img/protective/video1.mp4',
+  mobile: './img/protective/protective_mob.mp4',
   desctop: './img/protective/protective.mp4',
 };
 
