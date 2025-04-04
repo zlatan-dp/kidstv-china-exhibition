@@ -10,7 +10,7 @@ const emailError = document.getElementById('email-error');
 const messageError = document.getElementById('message-error');
 
 function validateName(name) {
-  return /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,}$/.test(name.trim());
+  return /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,}(?: [A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,})*$/.test(name.trim());
 }
 
 function validateEmail(email) {
