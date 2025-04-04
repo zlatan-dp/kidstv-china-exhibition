@@ -14,7 +14,17 @@ function validateName(name) {
 }
 
 function validateEmail(email) {
-  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.trim());
+  email = email.trim();
+
+  const emailPattern = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*[a-zA-Z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  return (
+    emailPattern.test(email) &&
+    !/\.\./.test(email) && // Заборона подвійних крапок
+    !/@\./.test(email) && // Заборона "@."
+    !/\.@/.test(email) && // Заборона ".@"
+    !/^\.|\.$/.test(email) // Заборона крапки на початку або в кінці
+  );
 }
 
 function validateMessage(message) {
