@@ -318,10 +318,43 @@ function updateBenefitsListener() {
   }
 }
 
+// Спостерігач за виходом відео за межі екрану
+
+let observer = null;
+
+function handleVideoOutOfView(entries) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      if (entry.target === protectiveVideoWrap && !protectiveVideo.paused) {
+        handleProtectiveClick();
+      } else if (entry.target === standVideoWrap && !standVideo.paused) {
+        handleStandClick();
+      }
+    }
+  });
+}
+
+// Функція для ініціалізації observer тільки на мобільних пристроях
+
+function initVideoObserver() {
+  if (isMobile()) {
+    if (!observer) {
+      observer = new IntersectionObserver(handleVideoOutOfView, { threshold: 0.5 });
+      observer.observe(protectiveVideoWrap);
+      observer.observe(standVideoWrap);
+    }
+  } else {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+  }
+}
+
 // Update Listeners
 
 function updateListeners() {
-  console.log('resize');
+  // console.log('resize');
 
   removeFrameListeners();
   addFrameListeners();
@@ -335,6 +368,7 @@ function updateListeners() {
   updateStandVideoSrc();
   updateFaqListeners();
   updateBenefitsListener();
+  initVideoObserver();
 }
 
 let resizeTimeout;
