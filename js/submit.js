@@ -9,6 +9,10 @@ const nameError = document.getElementById('name-error');
 const emailError = document.getElementById('email-error');
 const messageError = document.getElementById('message-error');
 
+const submitModal = document.querySelector('.backdrop-submit');
+const closeModalBtn = document.querySelector('.submit-menu-close');
+const submitModalMessage = document.querySelector('.submit-menu-message');
+
 function validateName(name) {
   return /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,}(?: [A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,})*$/.test(name.trim());
 }
@@ -72,14 +76,58 @@ emailInput.addEventListener('input', updateButtonState);
 messageInput.addEventListener('input', updateButtonState);
 legalCheckbox.addEventListener('change', updateButtonState);
 
-contactForm.addEventListener('submit', function (e) {
+// contactForm.addEventListener('submit', function (e) {
+//   e.preventDefault();
+
+//   if (!submitBtn.disabled) {
+//     // console.log(nameInput.value, emailInput.value, messageInput.value);
+//     alert(`Name: ${nameInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value}`);
+
+//     contactForm.reset();
+//     updateButtonState();
+//   }
+// });
+
+function showModal(message) {
+  submitModalMessage.textContent = message;
+  submitModal.classList.remove('is-hidden');
+}
+
+function closeModal() {
+  submitModal.classList.add('is-hidden');
+}
+
+closeModalBtn.addEventListener('click', closeModal);
+
+contactForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   if (!submitBtn.disabled) {
-    // console.log(nameInput.value, emailInput.value, messageInput.value);
-    alert(`Name: ${nameInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value}`);
+    try {
+      const formData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value,
+      };
 
-    contactForm.reset();
-    updateButtonState();
+      const response = await fetch('/url', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Network responce was not ok');
+
+      const data = await response.json();
+
+      showModal('OK');
+      contactForm.reset();
+      updateButtonState();
+    } catch (error) {
+      showModal('Error');
+      console.error('Error:', error);
+    }
   }
 });
