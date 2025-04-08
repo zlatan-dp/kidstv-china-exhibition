@@ -4,11 +4,6 @@ const menuList = document.querySelector('.mob-menu-list');
 const menu = document.querySelector('.backdrop');
 const body = document.querySelector('body');
 
-// function toggleMenu() {
-//   menu.classList.toggle('is-hidden');
-//   body.classList.toggle('no-scroll');
-// }
-
 function toggleMenu() {
   const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
 

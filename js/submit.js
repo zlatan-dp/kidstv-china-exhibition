@@ -1,14 +1,3 @@
-const nameInput = document.getElementById('name');
-const emailInput = document.getElementById('email');
-const messageInput = document.getElementById('message');
-const legalCheckbox = document.getElementById('legal');
-const submitBtn = document.querySelector('.submit-btn');
-const contactForm = document.getElementById('contact-form');
-
-const nameError = document.getElementById('name-error');
-const emailError = document.getElementById('email-error');
-const messageError = document.getElementById('message-error');
-
 // legal text
 
 const legalText = document.querySelector('.legat-text');
@@ -19,7 +8,18 @@ legalTextToggle.addEventListener('click', () => {
   legalTextToggle.classList.toggle('rotated');
 });
 
-// ---------
+// validate form
+
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+const legalCheckbox = document.getElementById('legal');
+const submitBtn = document.querySelector('.submit-btn');
+const contactForm = document.getElementById('contact-form');
+
+const nameError = document.getElementById('name-error');
+const emailError = document.getElementById('email-error');
+const messageError = document.getElementById('message-error');
 
 function validateName(name) {
   return /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,}(?: [A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,})*$/.test(name.trim());
@@ -84,18 +84,6 @@ emailInput.addEventListener('input', updateButtonState);
 messageInput.addEventListener('input', updateButtonState);
 legalCheckbox.addEventListener('change', updateButtonState);
 
-// contactForm.addEventListener('submit', function (e) {
-//   e.preventDefault();
-
-//   if (!submitBtn.disabled) {
-//     // console.log(nameInput.value, emailInput.value, messageInput.value);
-//     alert(`Name: ${nameInput.value}\nEmail: ${emailInput.value}\nMessage: ${messageInput.value}`);
-
-//     contactForm.reset();
-//     updateButtonState();
-//   }
-// });
-
 // Submit
 
 const submitModal = document.querySelector('.backdrop-submit');
@@ -115,9 +103,13 @@ const errorSubmitMessage =
 function showModal(message, tv, showBtn) {
   submitModalMessage.textContent = message;
   tvIcon.src = tv;
+  whatsup.classList.add('display-none');
+  okBtn.classList.add('display-none');
+
   showBtn === 'whatsup'
     ? whatsup.classList.remove('display-none')
     : okBtn.classList.remove('display-none');
+
   submitModal.classList.remove('is-hidden');
 }
 
@@ -125,6 +117,8 @@ function closeModal() {
   submitModal.classList.add('is-hidden');
   whatsup.classList.add('display-none');
   okBtn.classList.add('display-none');
+  submitModalMessage.textContent = '';
+  tvIcon.src = '';
 }
 
 closeModalBtn.addEventListener('click', closeModal);
@@ -135,11 +129,12 @@ contactForm.addEventListener('submit', async function (e) {
 
   if (!submitBtn.disabled) {
     try {
-      // const formData = {
-      //   name: nameInput.value,
-      //   email: emailInput.value,
-      //   message: messageInput.value,
-      // };
+      const formData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value,
+      };
+      console.log(formData);
 
       // const response = await fetch('/url', {
       //   method: 'POST',
