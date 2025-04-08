@@ -82,7 +82,18 @@
           <div class="submit-menu-close">
             <img src="./img/close-icon.svg" alt="close" />
           </div>
+          <div class="tv-icon-wrap">
+            <img src="./img/tv-smile-icon.svg" alt="tv icon" id="tv-icon" />
+          </div>
           <p class="submit-menu-message"></p>
+          <a
+            href="https://wa.me/48781464422"
+            target="_blank"
+            class="submit-message-btn link display-none"
+            id="whatsup"
+            >WhatsApp</a
+          >
+          <button type="button" class="submit-message-btn display-none" id="ok-btn">OK</button>
         </div>
       </div>
 
@@ -313,17 +324,15 @@
               <li class="faq-item">
                 <div class="faq-question-wrap">
                   <p class="faq-question">
-                    Are any additional licenses or permits required to sell KidsTV under our own
-                    brand?
+                    Are any licenses required to purchase and distribute this product?
                   </p>
                   <div class="question-icon">
                     <img src="./img/faq-icon.svg" alt="icon" />
                   </div>
                 </div>
                 <p class="faq-answer">
-                  No additional licenses or special permits are necessary. To sell KidsTV under your
-                  own brand, you only need to obtain local certification (the same as for standard
-                  TV equipment) and sign a licensing agreement with us.
+                  The product does not require any special licenses—standard local certifications
+                  for a TV product and a license agreement with our company are sufficient.
                 </p>
               </li>
               <li class="faq-item">
@@ -334,8 +343,9 @@
                   </div>
                 </div>
                 <p class="faq-answer">
-                  Yes, we offer OEM customization options, including logo placement, packaging
-                  design, and user interface modifications to match your brand identity.
+                  Yes, we’re open to discussing various customization options to align the product
+                  with your brand—including packaging, branding elements, and additional features or
+                  accessories.
                 </p>
               </li>
               <li class="faq-item">
@@ -457,14 +467,27 @@
                     <textarea id="message" placeholder="Message*" required></textarea>
                     <span id="message-error" class="error-message"></span>
                   </div>
-                  <label class="checkbox-container">
-                    <input type="checkbox" id="legal" />
-                    <span class="checkbox-custom"></span>
-                    <span class="legat-text"
-                      >I give my consent for the processing of my personal data in accordance with
-                      applicable data protection laws.</span
-                    >
-                  </label>
+                  <div class="checkbox-container-wrap">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="legal" />
+                      <span class="checkbox-custom"></span>
+                      <p class="legat-text">
+                        By submitting this form, you confirm and consent to the processing, storage
+                        and transfer of your personal data in accordance with the laws of the
+                        European Union <a class="link" href="https://gdpr-info.eu/"
+                          >https://gdpr-info.eu/</a
+                        >. You can contact our Customer Care team regarding any request related to
+                        our products and services (service, return, warranty). The personal data is
+                        collected and processed solely for the purposes stated above and to assess
+                        the quality of the service. If you do not fill in the required data, you
+                        will not be able to access all or part of the Customer Care Services.
+                      </p>
+                    </label>
+                    <div class="checkbox-container-icon">
+                      <img src="./img/legal-icon.svg" alt="" />
+                    </div>
+                  </div>
+
                   <button type="submit" class="submit-btn" disabled>Send</button>
                 </form>
               </div>

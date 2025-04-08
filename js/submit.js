@@ -9,9 +9,17 @@ const nameError = document.getElementById('name-error');
 const emailError = document.getElementById('email-error');
 const messageError = document.getElementById('message-error');
 
-const submitModal = document.querySelector('.backdrop-submit');
-const closeModalBtn = document.querySelector('.submit-menu-close');
-const submitModalMessage = document.querySelector('.submit-menu-message');
+// legal text
+
+const legalText = document.querySelector('.legat-text');
+const legalTextToggle = document.querySelector('.checkbox-container-icon');
+
+legalTextToggle.addEventListener('click', () => {
+  legalText.classList.toggle('expanded');
+  legalTextToggle.classList.toggle('rotated');
+});
+
+// ---------
 
 function validateName(name) {
   return /^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,}(?: [A-Za-zА-Яа-яЁёІіЇїЄєҐґ]{2,})*$/.test(name.trim());
@@ -88,45 +96,70 @@ legalCheckbox.addEventListener('change', updateButtonState);
 //   }
 // });
 
-function showModal(message) {
+// Submit
+
+const submitModal = document.querySelector('.backdrop-submit');
+const closeModalBtn = document.querySelector('.submit-menu-close');
+const submitModalMessage = document.querySelector('.submit-menu-message');
+
+const okBtn = document.getElementById('ok-btn');
+const whatsup = document.getElementById('whatsup');
+const tvIcon = document.getElementById('tv-icon');
+
+const okSubmitMessage =
+  'Thank you for reaching out! We’ve received your request and will be in touch shortly. We appreciate your interest and look forward to working with you.';
+
+const errorSubmitMessage =
+  'Oops, something went wrong! We’re really sorry for the inconvenience. Please reach out to us on WhatsApp for a direct response.';
+
+function showModal(message, tv, showBtn) {
   submitModalMessage.textContent = message;
+  tvIcon.src = tv;
+  showBtn === 'whatsup'
+    ? whatsup.classList.remove('display-none')
+    : okBtn.classList.remove('display-none');
   submitModal.classList.remove('is-hidden');
 }
 
 function closeModal() {
   submitModal.classList.add('is-hidden');
+  whatsup.classList.add('display-none');
+  okBtn.classList.add('display-none');
 }
 
 closeModalBtn.addEventListener('click', closeModal);
+okBtn.addEventListener('click', closeModal);
 
 contactForm.addEventListener('submit', async function (e) {
   e.preventDefault();
 
   if (!submitBtn.disabled) {
     try {
-      const formData = {
-        name: nameInput.value,
-        email: emailInput.value,
-        message: messageInput.value,
-      };
+      // const formData = {
+      //   name: nameInput.value,
+      //   email: emailInput.value,
+      //   message: messageInput.value,
+      // };
 
-      const response = await fetch('/url', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch('/url', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-type': 'application/json',
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
-      if (!response.ok) throw new Error('Network responce was not ok');
+      // if (!response.ok) throw new Error('Network responce was not ok');
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      showModal('OK');
+      if (Math.random() > 0.5) throw new Error('Network responce was not ok');
+
+      showModal(okSubmitMessage, './img/tv-smile-icon.svg', 'ok');
       contactForm.reset();
       updateButtonState();
     } catch (error) {
-      showModal('Error');
+      showModal(errorSubmitMessage, './img/tv-sad-icon.svg', 'whatsup');
       console.error('Error:', error);
     }
   }

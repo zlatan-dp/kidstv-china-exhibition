@@ -293,12 +293,24 @@ html {
 
   .submit-message-wrap {
     position: relative;
-    height: 50%;
-    width: 50%;
-    padding: 64px 36px;
+    /* position: absolute; */
+    /* left: 50%;
+    top: 50%; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 521px;
+    width: 90%;
+    height: auto;
+    padding: clamp(20px, 2.6vw, 50px) clamp(20px, 2vw, 40px);
     border-radius: 30px;
     background-color: var(--white-color);
-    transform: scale(1) translate(50%, 50%);
+    /* transform: scale(1) translate(-50%, -50%); */
+    transform: scale(1);
 
     transition: transform var(--trans-dur) var(--trans-timing-function);
 
@@ -307,6 +319,33 @@ html {
       right: 20px;
       top: 20px;
       cursor: pointer;
+    }
+
+    .submit-menu-message {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 133%;
+      text-align: center;
+      color: var(--second-black-color);
+    }
+
+    .submit-message-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      width: 238px;
+      height: 46px;
+      background-color: var(--accent-color);
+      color: var(--white-color);
+
+      &.display-none {
+        display: none;
+      }
     }
   }
 
@@ -1325,42 +1364,73 @@ html {
               line-height: 1;
             }
 
-            .checkbox-container {
+            .checkbox-container-wrap {
               display: flex;
-              align-items: center;
-              line-height: 1;
-              margin-bottom: 24px;
-            }
+              gap: 10px;
 
-            .checkbox-container input {
-              display: none;
-            }
+              .checkbox-container {
+                display: flex;
+                align-items: flex-start;
+                line-height: 1;
+                margin-bottom: 24px;
+              }
 
-            .checkbox-custom {
-              width: 20px;
-              height: 20px;
-              border: 1px solid #626262;
-              flex-shrink: 0;
-              display: inline-block;
-              border-radius: 5px;
-              cursor: pointer;
-              margin-right: 10px;
-              position: relative;
-            }
+              .checkbox-container input {
+                display: none;
+              }
 
-            .checkbox-container input:checked + .checkbox-custom::after {
-              content: '✓';
-              position: absolute;
-              font-size: 18px;
-              left: 2px;
-              top: 0px;
-              color: #626262;
-            }
+              .checkbox-custom {
+                width: 20px;
+                height: 20px;
+                border: 1px solid #626262;
+                flex-shrink: 0;
+                display: inline-block;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-right: 10px;
+                position: relative;
+              }
 
-            .legat-text {
-              font-weight: 400;
-              font-size: 14px;
-              color: var(--second-black-color);
+              .checkbox-container input:checked + .checkbox-custom::after {
+                content: '✓';
+                position: absolute;
+                font-size: 18px;
+                left: 2px;
+                top: 0px;
+                color: #626262;
+              }
+
+              .legat-text {
+                font-weight: 400;
+                font-size: 14px;
+                color: var(--second-black-color);
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                line-clamp: 3;
+                -webkit-line-clamp: 3; /* Кількість рядків до обрізання */
+                -webkit-box-orient: vertical;
+
+                &.expanded {
+                  line-clamp: none;
+                  -webkit-line-clamp: unset; /* Відключає обмеження рядків */
+                  overflow: visible;
+                  text-overflow: unset;
+                }
+              }
+
+              .checkbox-container-icon {
+                flex-shrink: 0;
+                width: 20px;
+                height: 20px;
+                transition: transform var(--trans-dur) var(--trans-timing-function);
+                cursor: pointer;
+
+                &.rotated {
+                  transform: rotate(180deg);
+                }
+              }
             }
 
             .submit-btn {
