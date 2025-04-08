@@ -1276,6 +1276,8 @@ html {
     z-index: 90;
     background-image: url('../img/bg-contact-us-mob.jpg');
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     @media (min-width: 760px) {
       background-image: url('../img/bg-contact-us.jpg');
