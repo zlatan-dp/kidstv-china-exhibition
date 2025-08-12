@@ -136,7 +136,7 @@ contactForm.addEventListener('submit', async function (e) {
       };
       console.log(formData);
 
-      // const response = await fetch('/url', {
+      // const response = await fetch('https://kidstv.free.beeceptor.com', {
       //   method: 'POST',
       //   headers: {
       //     'Content-type': 'application/json',
@@ -146,9 +146,11 @@ contactForm.addEventListener('submit', async function (e) {
 
       // if (!response.ok) throw new Error('Network responce was not ok');
 
-      // const data = await response.json();
-
       if (Math.random() > 0.5) throw new Error('Network responce was not ok');
+      // console.log(response.status);
+
+      // const data = await response.json();
+      // console.log(data);
 
       showModal(okSubmitMessage, './img/tv-smile-icon.svg', 'ok');
       contactForm.reset();

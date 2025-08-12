@@ -21,3 +21,26 @@ function toggleMenu() {
 openMenuBtn.addEventListener('click', toggleMenu);
 closeMenuBtn.addEventListener('click', toggleMenu);
 menuList.addEventListener('click', toggleMenu);
+
+// lupa
+
+const pageMagnifier = new HTMLMagnifier({
+  zoom: 2,
+  shape: 'circle',
+  width: 300,
+  height: 300,
+});
+
+const magnifierBtn = document.getElementById('toggleMagnifier');
+let magnifierEnabled = false;
+
+magnifierBtn.addEventListener('click', () => {
+  magnifierEnabled = !magnifierEnabled;
+  if (magnifierEnabled) {
+    pageMagnifier.show();
+    magnifierBtn.textContent = 'Вимкнути лупу';
+  } else {
+    pageMagnifier.hide();
+    magnifierBtn.textContent = 'Увімкнути лупу';
+  }
+});

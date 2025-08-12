@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,6 +11,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <script src="https://cdn.jsdelivr.net/npm/html-magnifier@2.0.3/html-magnifier.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,6 +30,7 @@
             <img src="./img/menu-burger.svg" alt="burger-menu" />
           </button>
           <a href="#hero-section" class="logo white-color link">KidsTV</a>
+          <button id="toggleMagnifier">Увімкнути лупу</button>
           <nav class="navigation">
             <ul class="menu-list list">
               <li class="menu-item">
@@ -536,5 +539,11 @@
     <script src="./js/mob-menu.js"></script>
     <script src="./js/animations.js"></script>
     <script src="./js/submit.js"></script>
+    <!-- <script src="./js/html-magnifier.js"></script> -->
+    <!-- <script>
+      /* global HTMLMagnifier */
+      const magnifier = new HTMLMagnifier({ width: 400 });
+      magnifier.show();
+    </script> -->
   </body>
 </html>
