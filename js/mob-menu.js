@@ -26,8 +26,8 @@ menuList.addEventListener('click', toggleMenu);
 
 const pageMagnifier = new HTMLMagnifier({
   zoom: 2,
-  shape: 'circle',
-  width: 300,
+  shape: 'square',
+  width: 450,
   height: 300,
 });
 
